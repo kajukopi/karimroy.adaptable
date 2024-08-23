@@ -4,8 +4,15 @@ const router = new Router()
 const User = require("../models/user")
 
 
+// DASHBOARD
+router.get('/dashboard', async (ctx) => {
+  if (!ctx.session?.user?.isActive) return ctx.redirect('/login')
+  await ctx.render('dashboard', { title: 'Dashboard' })
+})
+
 // HOME
 router.get('/', async (ctx) => {
+  console.log(ctx.session?.user?.isActive);
   await ctx.render('home', { title: 'Home' })
 })
 
