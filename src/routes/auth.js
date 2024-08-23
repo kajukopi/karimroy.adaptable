@@ -12,7 +12,7 @@ router.get('/', async (ctx) => {
 
 // LOGOUT
 router.get('/logout', async (ctx) => {
-  ctx.session.regenerate((e) => {
+  ctx.session?.regenerate((e) => {
     console.log(e);
     ctx.redirect('/login')
   })
@@ -21,7 +21,7 @@ router.get('/logout', async (ctx) => {
 
 // REGISTER
 router.get('/register', async (ctx) => {
-  if (ctx.session.user.isActive) return ctx.redirect('/')
+  if (ctx.session?.user?.isActive) return ctx.redirect('/')
   await ctx.render('register', { title: 'register' })
 })
 router.post('/register', async (ctx) => {
@@ -81,8 +81,7 @@ router.post('/register', async (ctx) => {
 
 // LOGIN
 router.get('/login', async (ctx) => {
-  console.log(ctx.session.user);
-  if (ctx.session.user.isActive) return ctx.redirect('/')
+  if (ctx.session?.user?.isActive) return ctx.redirect('/')
   await ctx.render('login', { title: 'Login' })
 })
 router.post('/login', async (ctx) => {
