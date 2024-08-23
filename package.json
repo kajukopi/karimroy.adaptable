@@ -8,9 +8,9 @@
   "scripts": {
     "dev": "nodemon ./src/index",
     "start": "node ./src/index",
-    "mongo-start": "docker run -d -p 27017:27017 --name my-mongo -v mongo-data:/data/db mongo",
-    "mongo-stop": "docker stop my-mongo",
-    "mongo-remove": "docker rm -f my-mongo",
+    "mongo-start": "docker run -d -p 27017:27017 --name database -v mongo-data:/data/db mongo",
+    "mongo-stop": "docker stop database",
+    "mongo-remove": "docker rm -f database",
     "lint:hbs": "ember-template-lint .",
     "format:hbs": "prettier **/*.hbs --write"
   },
