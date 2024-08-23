@@ -13,14 +13,19 @@
   </head>
 
   <body style="background-color: aliceblue;">
+    <!--Main Navigation-->
     <header>
-
+      {{> header}}
     </header>
-    <main class="container my-5 d-lg-flex d-md-flex justify-content-center">
-      <section style="max-width: 375px;min-width:350px" class="">
+    <!--Main Navigation-->
+
+    <main id="content" style="margin-top: 58px">
+      <section class="container my-5 py-2 d-inline-flex justify-content-center">
+        <hr class="hr hr-blurry ">
         {{{body}}}
       </section>
     </main>
+
     <footer>
 
     </footer>
@@ -40,6 +45,32 @@
         toast.onmouseleave = Swal.resumeTimer;
       }
     });
+    const sidenav = document.getElementById("sidenav-1");
+    const sidenavInstance = mdb.Sidenav.getInstance(sidenav);
+
+    let innerWidth = null;
+
+    const setMode = (e) => {
+      // Check necessary for Android devices
+      if (window.innerWidth === innerWidth) {
+        return;
+      }
+
+      innerWidth = window.innerWidth;
+
+      if (window.innerWidth < 1400) {
+        sidenavInstance.changeMode("over");
+        sidenavInstance.hide();
+      } else {
+        sidenavInstance.changeMode("side");
+        sidenavInstance.show();
+      }
+    };
+
+    setMode();
+
+    // Event listeners
+    window.addEventListener("resize", setMode);
   </script>
   {{#if title}}
     <script type="text/javascript" src="../../../assets/js/pages/{{script title}}.js"></script>

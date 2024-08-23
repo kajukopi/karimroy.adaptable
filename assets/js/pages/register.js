@@ -1,4 +1,4 @@
-const form = document.querySelector('form')
+const form = document.querySelector('#form-register')
 if (Storage.get("username")) form.querySelector('#username').value = Storage.get("username")
 form.addEventListener('submit', async function (e) {
   e.preventDefault()

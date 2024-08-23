@@ -1,0 +1,94 @@
+<!-- Sidenav -->
+<nav id="sidenav-1" class="sidenav" data-mdb-mode="side" data-mdb-hidden="false" data-mdb-accordion="true" data-mdb-content="#content">
+  <a class="ripple d-flex justify-content-center py-4" href="#!" data-mdb-ripple-color="primary">
+    <img id="MDB-logo" src="https://mdbootstrap.com/wp-content/uploads/2018/06/logo-mdb-jquery-small.png" alt="MDB Logo" draggable="false" />
+  </a>
+
+  <ul class="sidenav-menu">
+    <li class="sidenav-item">
+      <a class="sidenav-link" href="/">
+        <i class="fas fa-chart-area fa-fw me-3"></i><span>Dashboard</span></a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link"><i class="fas fa-cogs fa-fw me-3"></i><span>Settings</span></a>
+      <ul class="sidenav-collapse">
+        <li class="sidenav-item">
+          <a class="sidenav-link" href="/profile">Profile</a>
+        </li>
+        <li class="sidenav-item">
+          <a class="sidenav-link" href="/account">Account</a>
+        </li>
+      </ul>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link"><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a>
+      <ul class="sidenav-collapse">
+        <li class="sidenav-item">
+          <a class="sidenav-link" href="/request-password-reset">Request password</a>
+        </li>
+        <li class="sidenav-item">
+          <a class="sidenav-link" href="/request-password-reset">Reset password</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="sidenav-menu position-absolute bottom-0 w-100 mb-3">
+    <li class="sidenav-item">
+      <a class="sidenav-link" href="">
+        <i class="fas fa-arrow-left fa-fw me-3"></i><span>Log Out</span></a>
+    </li>
+  </ul>
+</nav>
+<!-- Sidenav -->
+
+<!-- Navbar -->
+<nav id="content" class="navbar navbar-expand-lg navbar-light fixed-top shadow-0">
+  <!-- Container wrapper -->
+  <div id="" class="container">
+    <!-- Toggler -->
+    <button data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1" class="btn shadow-0 p-0 me-3 d-block d-xxl-none" aria-controls="#sidenav-1" aria-haspopup="true">
+      <i class="fas fa-bars fa-lg"></i>
+    </button>
+
+    <!-- Search form -->
+    <form class="d-none d-md-flex input-group w-lg-100 my-auto align-items-center">
+      <input autocomplete="off" type="search" class="form-control rounded shadow-4" placeholder='Search' style="max-width: 500px; border-color: #fff;" />
+      <span class="input-group-text border-0">
+        <a href="#!"><i class="fas fa-search text-dark"></i></a>
+      </span>
+    </form>
+
+    <!-- Right links -->
+    <ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
+      <!-- Notification dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-bell"></i>
+          <span class="badge rounded-pill badge-notification bg-danger">1</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Some news</a></li>
+          <li><a class="dropdown-item" href="#">Another news</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Avatar -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
+           aria-expanded="false">
+          <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="30" alt="" loading="lazy" />
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="/profile">My profile</a></li>
+          <li><a class="dropdown-item" href="/setting">Settings</a></li>
+          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

@@ -12,7 +12,7 @@ router.get('/dashboard', async (ctx) => {
 
 // HOME
 router.get('/', async (ctx) => {
-  console.log(ctx.session);
+  console.log(ctx.session.user);
   await ctx.render('home', { title: 'Home' })
 })
 
