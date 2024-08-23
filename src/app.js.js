@@ -21,7 +21,7 @@ mongoose.connect(process.env.DATABASE_URL);
 app.use(mount("/assets", serve(path.join(__dirname, "..", "assets"))));
 
 // Session configuration
-app.keys = ['karimroy', 'roykarim']; // Replace with your own secret keys
+app.keys = [process.env.SESSION_SECRET]; // Replace with your own secret keys
 const sessionConfig = {
   key: 'koa.sess', // cookie key (default is koa.sess)
   maxAge: 86400000, // cookie's expiration time in ms (1 day)

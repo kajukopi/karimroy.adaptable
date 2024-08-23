@@ -22,4 +22,7 @@ form.addEventListener('submit', async function (e) {
     title: 'Signed in successfully'
   });
   form.reset()
+  setTimeout(() => {
+    location.reload()
+  }, 2000);
 })

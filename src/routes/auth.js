@@ -12,17 +12,15 @@ router.get('/dashboard', async (ctx) => {
 
 // HOME
 router.get('/', async (ctx) => {
-  console.log(ctx.session?.user?.isActive);
+  console.log(ctx.session);
   await ctx.render('home', { title: 'Home' })
 })
 
 
 // LOGOUT
 router.get('/logout', async (ctx) => {
-  ctx.session?.regenerate((e) => {
-    console.log(e);
-    ctx.redirect('/login')
-  })
+  console.log(ctx.session);
+  ctx.redirect('/login')
 })
 
 
