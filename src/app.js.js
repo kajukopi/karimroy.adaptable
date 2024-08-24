@@ -53,6 +53,9 @@ const RENDER_CONFIG = {
 RENDER_CONFIG.hbs.registerHelper("script", function (a) {
   return a.toLowerCase().replaceAll(" ", "-")
 })
+RENDER_CONFIG.hbs.registerHelper("admin", function (a) {
+  return a === 'user' ? true : false
+})
 app.use(render(RENDER_CONFIG));
 
 // Apply the routes to the application

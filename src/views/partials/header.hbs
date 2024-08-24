@@ -6,38 +6,43 @@
 
   <ul class="sidenav-menu">
     <li class="sidenav-item">
-      <a class="sidenav-link" href="/">
+      <a class="sidenav-link" href="/dashboard">
         <i class="fas fa-chart-area fa-fw me-3"></i><span>Dashboard</span></a>
     </li>
-    <li class="sidenav-item">
-      <a class="sidenav-link"><i class="fas fa-cogs fa-fw me-3"></i><span>Settings</span></a>
-      <ul class="sidenav-collapse">
-        <li class="sidenav-item">
-          <a class="sidenav-link" href="/profile">Profile</a>
-        </li>
-        <li class="sidenav-item">
-          <a class="sidenav-link" href="/account">Account</a>
-        </li>
-      </ul>
-    </li>
-    <li class="sidenav-item">
-      <a class="sidenav-link"><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a>
-      <ul class="sidenav-collapse">
-        <li class="sidenav-item">
-          <a class="sidenav-link" href="/request-password-reset">Request password</a>
-        </li>
-        <li class="sidenav-item">
-          <a class="sidenav-link" href="/request-password-reset">Reset password</a>
-        </li>
-      </ul>
-    </li>
+    {{#if user}}
+      <li class="sidenav-item">
+        <a class="sidenav-link"><i class="fas fa-cogs fa-fw me-3"></i><span>Settings</span></a>
+        <ul class="sidenav-collapse">
+          <li class="sidenav-item">
+            <a class="sidenav-link" href="/profile">Profile</a>
+          </li>
+          {{#if (admin user.roles)}}
+            <li class="sidenav-item">
+              <a class="sidenav-link" href="/users">Users</a>
+            </li>
+          {{/if}}
+        </ul>
+      </li>
+    {{/if}}
+    {{#if user}}
+      <li class="sidenav-item">
+        <a class="sidenav-link"><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a>
+        <ul class="sidenav-collapse">
+          <li class="sidenav-item">
+            <a class="sidenav-link" href="/request-password-reset">Request password</a>
+          </li>
+        </ul>
+      </li>
+    {{/if}}
   </ul>
-  <ul class="sidenav-menu position-absolute bottom-0 w-100 mb-3">
-    <li class="sidenav-item">
-      <a class="sidenav-link" href="">
-        <i class="fas fa-arrow-left fa-fw me-3"></i><span>Log Out</span></a>
-    </li>
-  </ul>
+  {{#if user}}
+    <ul class="sidenav-menu position-absolute bottom-0 w-100 mb-3">
+      <li class="sidenav-item">
+        <a class="sidenav-link" href="/logout">
+          <i class="fas fa-arrow-left fa-fw me-3"></i><span>Log Out</span></a>
+      </li>
+    </ul>
+  {{/if}}
 </nav>
 <!-- Sidenav -->
 
@@ -57,37 +62,38 @@
         <a href="#!"><i class="fas fa-search text-dark"></i></a>
       </span>
     </form>
-
-    <!-- Right links -->
-    <ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
-      <!-- Notification dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-          <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Some news</a></li>
-          <li><a class="dropdown-item" href="#">Another news</a></li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Avatar -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
-           aria-expanded="false">
-          <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="30" alt="" loading="lazy" />
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="/profile">My profile</a></li>
-          <li><a class="dropdown-item" href="/setting">Settings</a></li>
-          <li><a class="dropdown-item" href="/logout">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
+    {{#if user}}
+      <!-- Right links -->
+      <ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
+        <!-- Notification dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fas fa-bell"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Some news</a></li>
+            <li><a class="dropdown-item" href="#">Another news</a></li>
+            <li>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li>
+          </ul>
+        </li>
+        <!-- Avatar -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
+             aria-expanded="false">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="30" alt="" loading="lazy" />
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/profile">Profile <span class="fw-bold">{{user.username}}</span></a></li>
+            <li><a class="dropdown-item" href="/setting">Settings</a></li>
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    {{/if}}
   </div>
   <!-- Container wrapper -->
 </nav>

@@ -4,22 +4,31 @@ const router = new Router()
 const User = require("../models/user")
 
 
+// USERS
+router.get('/users', async (ctx) => {
+  if (!ctx.session?.user?.isActive) return ctx.redirect('/login')
+  await ctx.render('users', { title: 'Users', user: ctx.session.user })
+})
+
+
 // DASHBOARD
 router.get('/dashboard', async (ctx) => {
   if (!ctx.session?.user?.isActive) return ctx.redirect('/login')
-  await ctx.render('dashboard', { title: 'Dashboard' })
+  await ctx.render('dashboard', { title: 'Dashboard', user: ctx.session.user })
 })
+
 
 // HOME
 router.get('/', async (ctx) => {
   console.log(ctx.session.user);
-  await ctx.render('home', { title: 'Home' })
+  await ctx.render('home', { title: 'Home', user: ctx.session.user })
 })
 
 
 // LOGOUT
 router.get('/logout', async (ctx) => {
   console.log(ctx.session);
+  ctx.session = null; // Destroy the session
   ctx.redirect('/login')
 })
 
